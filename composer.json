@@ -1,0 +1,14 @@
+{
+    "name": "cblink/yilianyun-sdk-laravel",
+    "description": "Package description here.",
+    "license": "LGPL",
+    "authors": [
+        {
+            "name": "牟勇",
+            "email": "my242551325@gmail.com"
+        }
+    ],
+    "require": {
+        "yly-openapi/yly-openapi-sdk": "^1.0"
+    }
+}
