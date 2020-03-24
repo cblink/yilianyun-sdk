@@ -1,6 +1,6 @@
 <?php
 
-namespace Cblink\YilianyunSdk\AccessToken;
+namespace Cblink\Yilianyun\AccessToken;
 
 use Pimple\Container;
 use Pimple\ServiceProviderInterface;

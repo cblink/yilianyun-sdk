@@ -1,8 +1,8 @@
 <?php
 
-namespace Cblink\YilianyunSdk\Printer;
+namespace Cblink\Yilianyun\Printer;
 
-use Cblink\YilianyunSdk\Client;
+use Cblink\Yilianyun\Client;
 
 class Printer extends Client
 {

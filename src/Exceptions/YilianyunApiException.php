@@ -1,6 +1,6 @@
 <?php
 
-namespace Cblink\YilianyunSdk\Exceptions;
+namespace Cblink\Yilianyun\Exceptions;
 
 class YilianyunApiException extends Exception
 {

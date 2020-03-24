@@ -1,8 +1,8 @@
 <?php
 
-namespace Cblink\YilianyunSdk\AccessToken;
+namespace Cblink\Yilianyun\AccessToken;
 
-use Cblink\YilianyunSdk\Client;
+use Cblink\Yilianyun\Client;
 use Mouyong\Foundation\AbstractClient;
 use Mouyong\Foundation\AbstractAccessToken;
 

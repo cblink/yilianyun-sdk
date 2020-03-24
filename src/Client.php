@@ -1,13 +1,13 @@
 <?php
 
-namespace Cblink\YilianyunSdk;
+namespace Cblink\Yilianyun;
 
 use Ramsey\Uuid\Uuid;
 use Mouyong\Foundation\AbstractClient;
 use Mouyong\Foundation\Contracts\ApiContract;
-use Cblink\YilianyunSdk\Exceptions\YilianyunApiException;
-use Cblink\YilianyunSdk\Exceptions\AccessTokenExpireException;
-use Cblink\YilianyunSdk\Exceptions\MethodRetryTooManyException;
+use Cblink\Yilianyun\Exceptions\YilianyunApiException;
+use Cblink\Yilianyun\Exceptions\AccessTokenExpireException;
+use Cblink\Yilianyun\Exceptions\MethodRetryTooManyException;
 
 class Client extends AbstractClient implements ApiContract
 {

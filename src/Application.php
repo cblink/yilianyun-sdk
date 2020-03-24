@@ -1,15 +1,15 @@
 <?php
 
-namespace Cblink\YilianyunSdk;
+namespace Cblink\Yilianyun;
 
 use Mouyong\Foundation\Foundation;
-use Cblink\YilianyunSdk\Printer\Printer;
-use Cblink\YilianyunSdk\Printer\PrinterServiceProvider;
-use Cblink\YilianyunSdk\AccessToken\AccessTokenServiceProvider;
+use Cblink\Yilianyun\Printer\Printer;
+use Cblink\Yilianyun\Printer\PrinterServiceProvider;
+use Cblink\Yilianyun\AccessToken\AccessTokenServiceProvider;
 
 /**
  * Class Application
- * @package Cblink\YilianyunSdk
+ * @package Cblink\Yilianyun
  *
  * @property-read \Mouyong\Foundation\Log $log
  * @property-read Printer $printer
