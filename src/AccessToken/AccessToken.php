@@ -24,9 +24,15 @@ class AccessToken extends AbstractAccessToken
 
     public function getTokenFromServer()
     {
-        return $this->getClient()->post('/oauth/oauth', [
+        $data = [
             'grant_type' => 'client_credentials',
             'scope' => 'all',
+        ];
+
+        $data = $this->getClient()->sign($data);
+
+        return $this->getClient()->request('POST', '/oauth/oauth', [
+            'body' => $data,
         ]);
     }
 

@@ -2,7 +2,9 @@
 
 namespace Cblink\YilianyunSdk;
 
+use Cblink\YilianyunSdk\Printer\Printer;
 use Cblink\YilianyunSdk\Kernel\Foundation;
+use Cblink\YilianyunSdk\Printer\PrinterServiceProvider;
 use Cblink\YilianyunSdk\AccessToken\AccessTokenServiceProvider;
 
 /**
@@ -10,6 +12,7 @@ use Cblink\YilianyunSdk\AccessToken\AccessTokenServiceProvider;
  * @package Cblink\YilianyunSdk
  *
  * @property-read Kernel\Log $log
+ * @property-read Printer $printer
  */
 class Application extends Foundation
 {
@@ -31,5 +34,6 @@ class Application extends Foundation
 
     protected $providers = [
         AccessTokenServiceProvider::class,
+        PrinterServiceProvider::class,
     ];
 }

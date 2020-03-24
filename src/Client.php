@@ -2,6 +2,8 @@
 
 namespace Cblink\YilianyunSdk;
 
+use Cblink\YilianyunSdk\Exceptions\AccessTokenExpireException;
+use Cblink\YilianyunSdk\Exceptions\MethodRetryTooManyException;
 use Cblink\YilianyunSdk\Kernel\AbstractClient;
 use Cblink\YilianyunSdk\Kernel\Contracts\ApiContract;
 use Cblink\YilianyunSdk\Exceptions\YilianyunApiException;
@@ -26,8 +28,12 @@ class Client extends AbstractClient implements ApiContract
         return $data;
     }
 
-    public function request(string $method, string $uri, array $options = [])
+    public function request(string $method, string $uri, array $options = [], $retry = 1)
     {
+        if ($retry === -1) {
+            throw new MethodRetryTooManyException("In SDK: uri: {$uri} 重试次数过多", Error::TOKEN_EXPIRE_STATUS);
+        }
+
         try {
             $rsp = $this->getClient()->request($method, $uri, $options);
         } catch (\Throwable $e) {
@@ -35,21 +41,38 @@ class Client extends AbstractClient implements ApiContract
             throw new YilianyunApiException($e->getMessage(), $e->getCode(), $e->getPrevious());
         }
 
-        return $this->castResponseToType($rsp);
+        try {
+            return $this->castResponseToType($rsp);
+        } catch (AccessTokenExpireException $e) {
+            $this->app->log->error("access_token 过期 code: {$e->getCode()} message: {$e->getMessage()}");
+
+            $this->app->access_token->token(true);
+            return $this->request($method, $uri, $options, --$retry);
+        } catch (\Throwable $e) {
+            $this->app->log->error("转换响应信息出现错误 error: {$e->getCode()} error_description: {$e->getMessage()} , request data ", $options);
+
+            throw $e;
+        }
     }
 
     public function castResponseToType($rsp)
     {
         $data = $rsp->toArray();
 
-        if (isset($data['error']) && intval($data['error']) !== 0) {
+        if (isset($data['error']) && intval($data['error']) === AccessTokenExpireException::CODE) {
             $this->app->log->error("转换响应信息出现错误 error: {$data['error']} error_description: {$data['error_description']}");
+
+            throw new AccessTokenExpireException($data['error_description'], $data['error']);
+        }
+
+        if (isset($data['error']) && intval($data['error']) !== 0) {
 
             throw new YilianyunApiException($data['error_description'], $data['error']);
         }
 
         $this->app->log->info('响应信息', $data);
 
-        return $data['body'];
+
+        return $data['body'] ?? $data;
     }
 }

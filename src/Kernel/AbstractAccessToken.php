@@ -21,13 +21,13 @@ abstract class AbstractAccessToken
 
     abstract public function getClient(): AbstractClient;
 
-    public function token($force = false): array
+    public function token($force = false)
     {
-        if ($force) {
-            $this->app['cache']->delete($this->cacheFor());
+        if ((! $this->hasToken()) || $force) {
+            $this->app->cache->delete($this->cacheFor());
         }
 
-        return $this->app['cache']->get($this->cacheFor(), function (ItemInterface $item) {
+        return $this->app->cache->get($this->cacheFor(), function (ItemInterface $item) {
             $tokenResult = $this->getTokenFromServer();
 
             $item->expiresAfter($tokenResult[$this->expire_in_key] ?? 7200 - 500);
@@ -41,6 +41,11 @@ abstract class AbstractAccessToken
     abstract public function getTokenFromServer();
 
     abstract public function refreshToken();
+
+    public function hasToken(): bool
+    {
+        return $this->app->cache->hasItem($this->cacheFor());
+    }
 
     public function getToken(): string
     {
@@ -59,6 +64,6 @@ abstract class AbstractAccessToken
 
     protected function cacheFor()
     {
-        return 'access_token.%s'.sha1(json_encode($this->credential()));
+        return 'access_token.'.sha1(json_encode($this->credential()));
     }
 }
