@@ -3,8 +3,8 @@
 namespace Cblink\YilianyunSdk\AccessToken;
 
 use Cblink\YilianyunSdk\Client;
-use Cblink\YilianyunSdk\Kernel\AbstractClient;
-use Cblink\YilianyunSdk\Kernel\AbstractAccessToken;
+use Mouyong\Foundation\AbstractClient;
+use Mouyong\Foundation\AbstractAccessToken;
 
 class AccessToken extends AbstractAccessToken
 {

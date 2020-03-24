@@ -2,8 +2,8 @@
 
 namespace Cblink\YilianyunSdk;
 
+use Mouyong\Foundation\Foundation;
 use Cblink\YilianyunSdk\Printer\Printer;
-use Cblink\YilianyunSdk\Kernel\Foundation;
 use Cblink\YilianyunSdk\Printer\PrinterServiceProvider;
 use Cblink\YilianyunSdk\AccessToken\AccessTokenServiceProvider;
 
@@ -11,7 +11,7 @@ use Cblink\YilianyunSdk\AccessToken\AccessTokenServiceProvider;
  * Class Application
  * @package Cblink\YilianyunSdk
  *
- * @property-read Kernel\Log $log
+ * @property-read \Mouyong\Foundation\Log $log
  * @property-read Printer $printer
  */
 class Application extends Foundation

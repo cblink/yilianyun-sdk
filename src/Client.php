@@ -2,12 +2,12 @@
 
 namespace Cblink\YilianyunSdk;
 
+use Ramsey\Uuid\Uuid;
+use Mouyong\Foundation\AbstractClient;
+use Mouyong\Foundation\Contracts\ApiContract;
+use Cblink\YilianyunSdk\Exceptions\YilianyunApiException;
 use Cblink\YilianyunSdk\Exceptions\AccessTokenExpireException;
 use Cblink\YilianyunSdk\Exceptions\MethodRetryTooManyException;
-use Cblink\YilianyunSdk\Kernel\AbstractClient;
-use Cblink\YilianyunSdk\Kernel\Contracts\ApiContract;
-use Cblink\YilianyunSdk\Exceptions\YilianyunApiException;
-use Ramsey\Uuid\Uuid;
 
 class Client extends AbstractClient implements ApiContract
 {
