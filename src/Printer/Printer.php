@@ -23,7 +23,7 @@ class Printer extends Client
 
     public function cancelUnprintTaskByMachineCode($machine_code)
     {
-        return $this->post('/print/index', compact('machine_code'));
+        return $this->post('/print/cancelall', compact('machine_code'));
     }
 
     public function getMachineStatusByMachineCode($machine_code)

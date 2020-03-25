@@ -17,6 +17,10 @@ use Cblink\Yilianyun\AccessToken\AccessTokenServiceProvider;
 class Application extends Foundation
 {
     protected $config = [
+        // 登录后打开 https://dev.10ss.net/admin/listapp ，点击具体的应用进行查看
+        'client_id' => 'your-client-id',
+        'client_secret' => 'your-client-secret',
+
         'log' => [
             'name' => 'yilianyun',
         ],
