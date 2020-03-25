@@ -11,7 +11,50 @@ $ composer require cblink/yilianyun-sdk-laravel -vvv
 
 ## Usage
 
-TODO
+```
+use Cblink\Yilianyun\Application;
+
+$config = [
+  // 登录后打开 https://dev.10ss.net/admin/listapp ，点击具体的应用进行查看
+  'client_id' => 'your-client-id',
+  'client_secret' => 'your-client-secret',
+  
+  'log' => [
+      'name' => 'yilianyun',
+  ],
+  'http' => [
+      'timeout' => 10,
+      'base_uri' => 'https://open-api.10ss.net',
+      'headers' => [
+          'accept' => 'application/json',
+      ],
+  ],
+  'cache' => [
+      'namespace' => 'yilianyun',
+  ],
+];
+
+$app = new Application($config);
+
+// 添加打印机
+$app->printer->addPrinter($machine_code, $msign, $print_name, $phone);
+
+// 从账号下终端打印机
+$app->printer->removePrinter($machine_code);
+
+// 创建文本打印任务
+$app->printer->createPrinterTask($machine_code, $content, $origin_id);
+
+// 取消终端所有未打印任务
+$app->printer->cancelUnprintTaskByMachineCode($machine_code);
+
+// 获取终端状态
+$app->printer->getMachineStatusByMachineCode($machine_code);
+
+// 获取终端的打印任务状态
+$app->printer->getStatusStatusByMachineCodeAndPlatformTaskNo($machine_code);
+
+```
 
 ## Contributing
 
