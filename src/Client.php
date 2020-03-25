@@ -31,7 +31,7 @@ class Client extends AbstractClient implements ApiContract
     public function request(string $method, string $uri, array $options = [], $retry = 1)
     {
         if ($retry === -1) {
-            throw new MethodRetryTooManyException("In SDK: uri: {$uri} 重试次数过多", Error::TOKEN_EXPIRE_STATUS);
+            throw new MethodRetryTooManyException("In SDK: uri: {$uri} 重试次数过多", AccessTokenExpireException::CODE);
         }
 
         try {
