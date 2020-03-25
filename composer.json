@@ -9,7 +9,6 @@
         }
     ],
     "require": {
-        "yly-openapi/yly-openapi-sdk": "^1.0",
         "pimple/pimple": "^3.3",
         "adbario/php-dot-notation": "^2.2",
         "monolog/monolog": "^2.0",
