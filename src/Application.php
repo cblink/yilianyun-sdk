@@ -25,9 +25,11 @@ class Application extends Foundation
             'name' => 'yilianyun',
         ],
         'http' => [
-            'timeout' => 10,
+            'timeout' => 3,
             'base_uri' => 'https://open-api.10ss.net',
+            'http_errors' => false,
             'headers' => [
+                'content-type' => 'application/x-www-form-urlencode',
                 'accept' => 'application/json',
             ],
         ],

@@ -17,6 +17,6 @@ class LaravelServiceProvider extends \Illuminate\Support\ServiceProvider
 
     public function provides()
     {
-        return [Application::class, 'weather'];
+        return [Application::class, 'yilianyun'];
     }
 }

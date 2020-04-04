@@ -57,7 +57,13 @@ class Client extends AbstractClient implements ApiContract
 
     public function castResponseToType($rsp)
     {
-        $data = $rsp->toArray();
+        $data = json_decode($rsp->getBody()->getContents(), true);
+
+        if (empty($data)) {
+            $this->app->log->error('响应数据为空');
+
+            throw new YilianyunApiException('响应数据为空', 500);
+        }
 
         if (isset($data['error']) && intval($data['error']) === AccessTokenExpireException::CODE) {
             $this->app->log->error("转换响应信息出现错误 error: {$data['error']} error_description: {$data['error_description']}");
