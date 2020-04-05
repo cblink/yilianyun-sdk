@@ -31,7 +31,7 @@ class Printer extends Client
         return $this->post('/printer/getprintstatus', compact('machine_code'));
     }
 
-    public function getStatusStatusByMachineCodeAndPlatformTaskNo($machine_code, $order_id)
+    public function getTaskStatusByMachineCodeAndPlatformTaskNo($machine_code, $order_id)
     {
         return $this->post('/printer/getorderstatus', compact('machine_code', 'order_id'));
     }
