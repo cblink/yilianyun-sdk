@@ -32,7 +32,7 @@ class AccessToken extends AbstractAccessToken
         $data = $this->getClient()->sign($data);
 
         return $this->getClient()->request('POST', '/oauth/oauth', [
-            'body' => $data,
+            'form_params' => $data,
         ]);
     }
 
