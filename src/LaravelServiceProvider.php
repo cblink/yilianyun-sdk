@@ -13,6 +13,10 @@ class LaravelServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         $this->app->alias(Application::class, 'yilianyun');
+
+        $this->app->extend('log', function () {
+            return app('log');
+        });
     }
 
     public function provides()
