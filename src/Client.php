@@ -63,6 +63,10 @@ class Client extends AbstractClient implements ApiContract
 
     public function castResponseToType($rsp)
     {
+        if (!empty($this->app->options['http']['response_type']) && $this->app->options['http']['response_type'] === 'raw') {
+            return $rsp;
+        }
+
         $data = json_decode($rsp->getBody()->getContents(), true);
 
         if (empty($data)) {
