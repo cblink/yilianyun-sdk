@@ -13,7 +13,7 @@ class Printer extends Client
 
     public function removePrinter($machine_code)
     {
-        return $this->post('/printer/addprinter', compact('machine_code'));
+        return $this->post('/printer/deleteprinter', compact('machine_code'));
     }
 
     public function createPrinterTask($machine_code, $content, $origin_id)
