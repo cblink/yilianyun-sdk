@@ -29,7 +29,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Cblink\\Puyingyun\\LaravelServiceProvider"
+                "Cblink\\Yilianyun\\LaravelServiceProvider"
             ]
         }
     }
